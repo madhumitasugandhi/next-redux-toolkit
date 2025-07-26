@@ -5,7 +5,7 @@ import styles from '../../app/showEmp.module.css';
 import { removeEmployee } from "../reduxToolkit/slice";
 
 const DeleteEmployee = () => {
-    const data = useSelector((value)=> value.employees)
+    const data = useSelector((value)=> value.employeeData.employees)
     const dispatch = useDispatch();
   return (
     <>
