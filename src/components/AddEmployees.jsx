@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from '../app/addEmp.module.css'
 import { useDispatch } from 'react-redux';
 import { addEmployee } from '@/app/reduxToolkit/slice';
+import Link from 'next/link';
 
 const AddEmployees = () => {
   const [empName, setEmpName] = useState('');
@@ -21,7 +22,8 @@ const AddEmployees = () => {
       value={empName}
       placeholder="Enter Employee Data" 
       onChange={(e)=> setEmpName(e.target.value)} />
-      <button onClick={dataDispatch} className={styles.button}>Add</button>
+      <button onClick={dataDispatch} className={styles.button}>Add</button><br/>
+      <Link href='/delete-employee'>Delete</Link>
     </div>
   );
 }
