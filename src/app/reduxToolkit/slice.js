@@ -1,4 +1,6 @@
-const { default: AddEmployees } = require("@/components/AddEmployees")
+
+import AddEmployees from "@/components/AddEmployees"
+
 const {createSlice, nanoid} = require("@reduxjs/toolkit")
 
 const initialState = {

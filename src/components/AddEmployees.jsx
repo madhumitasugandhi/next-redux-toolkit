@@ -10,11 +10,17 @@ const AddEmployees = () => {
   const dataDispatch = () =>{
     console.log(empName)
         dispatch(addEmployee(empName))
+        setEmpName('')
   }
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Add Employees</h2>
-      <input className={styles.input} type="text" placeholder="Enter Employee Data" onChange={(e)=> setEmpName(e.target.value)} />
+      <input 
+      className={styles.input} 
+      type="text" 
+      value={empName}
+      placeholder="Enter Employee Data" 
+      onChange={(e)=> setEmpName(e.target.value)} />
       <button onClick={dataDispatch} className={styles.button}>Add</button>
     </div>
   );
