@@ -1,14 +1,17 @@
 
 import AddEmployees from "@/components/AddEmployees"
 
-const {createSlice, nanoid, createAsyncThunk} = require("@reduxjs/toolkit")
+const {createSlice, nanoid, createAsyncThunk, current} = require("@reduxjs/toolkit")
 
 const initialState = {
-    employees:[],
-    isLoading: false,
-    error: null,
-    employeesAPIData: []
+  employees: typeof window !== 'undefined' && localStorage.getItem("emp")
+    ? JSON.parse(localStorage.getItem("emp"))
+    : [],
+  isLoading: false,
+  error: null,
+  employeesAPIData: []
 }
+
 
 export const apiData = createAsyncThunk("apidata", async()=>{
     const response = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -26,12 +29,12 @@ const Slice = createSlice({
                 name:action.payload
             }
             state.employees.push(data)
+            let empData = JSON.stringify(current(state.employees));
+            localStorage.setItem('emp', empData);
         },
         removeEmployee:(state, action)=>{
-            const data = state.employees.filter((item)=>{
-                return item.id !== action.payload
-            })
-            state.employees = data;
+            state.employees = state.employees.filter((item)=>item.id !== action.payload);
+            localStorage.setItem("emp", JSON.stringify(state.employees))
         }
     },
     extraReducers:(builder)=>{

@@ -2,6 +2,7 @@
 
 import AddEmployees from "@/components/AddEmployees";
 import ShowEmployees from "@/components/ShowEmployees";
+import SyncLocalStorage from "@/components/SyncLocalStorage";
 
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
           <AddEmployees/>
           <br/><br/>
           <ShowEmployees/>
+          <SyncLocalStorage/>
       </>
   );
 }

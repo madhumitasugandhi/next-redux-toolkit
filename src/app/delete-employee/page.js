@@ -11,12 +11,12 @@ const DeleteEmployee = () => {
     <>
         <h3>Delete Employee</h3>
         {
-            data.map((item)=>
-            <>
+            data.map((item)=>(
+              <div key={item.id}>
                 <span key={item.id}>{item.name}</span>
                 <button className={styles.button} onClick={()=>dispatch(removeEmployee(item.id))}>Delete</button><br/><br/>
-            </>
-            )
+              </div>
+            ))
         }
     </>
   )
